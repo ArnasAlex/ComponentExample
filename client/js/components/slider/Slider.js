@@ -71,12 +71,14 @@ export default class Slider {
         this.onWindowResize = this.onWindowResize.bind(this);
 
         this.element.addEventListener('mousedown', this.onMouseDown);
+        this.element.addEventListener('touchstart', this.onMouseDown);
         this.element.addEventListener('dragstart', this.onDragStart);
         window.addEventListener('resize', this.onWindowResize);
     }
 
     unbindEvents(){
         this.element.removeEventListener('mousedown', this.onMouseDown);
+        this.element.removeEventListener('touchstart', this.onMouseDown);
         this.element.removeEventListener('dragstart', this.onDragStart);
         window.removeEventListener('resize', this.onWindowResize);
     }
@@ -85,12 +87,16 @@ export default class Slider {
         this.updateSlider(evt);
 
         document.addEventListener('mouseup', this.onMouseUp);
+        document.addEventListener('touchend', this.onMouseUp);
         document.addEventListener('mousemove', this.onMouseMove);
+        document.addEventListener('touchmove', this.onMouseMove);
     }
 
     onMouseUp(evt){
         document.removeEventListener('mouseup', this.onMouseUp);
+        document.removeEventListener('touchend', this.onMouseUp);
         document.removeEventListener('mousemove', this.onMouseMove);
+        document.removeEventListener('touchmove', this.onMouseMove);
     }
 
     onMouseMove(evt){
