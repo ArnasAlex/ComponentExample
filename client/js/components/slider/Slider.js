@@ -162,6 +162,9 @@ export default class Slider {
     }
 
     getMouseCoords(evt) {
+        if (evt.touches){
+            return {x: evt.touches[0].pageX, y: evt.touches[0].pageY};
+        }
         return {x: evt.pageX, y: evt.pageY};
     }
 
