@@ -63,6 +63,7 @@ gulp.task('watch', function(cb) {
 });
 
 gulp.task('default', ['watch']);
+gulp.task('build', ['html', 'css', 'js']);
 
 function bundleJs() {
     scriptsCount++;
